@@ -26,10 +26,16 @@ int main(int argc, char **argv) {
       case 'h':
         fprintf(stderr, "fuzzer version 1.0.0 \n");
         fprintf(stderr, "Usage: fuzzer [-r <file>] [-w <file>] [-s <seed>] [-f <factor>] [-p] [-h] \n");
-        fprintf(stderr, "              -r:  Read raw data from file. Standard input is used if file is '-'. \n");
+        fprintf(stderr, "              -r:  Read the raw data from file. Standard input is used if file is '-'. \n");
         fprintf(stderr, "              -w:  Write the raw data to file. Standard output is used if file is '-'. \n");
+        fprintf(stderr, "              -s:  Set seed for pseudo-random number generator. \n");
+        fprintf(stderr, "              -f:  On average one of <factor> bytes will be random. \n");
         fprintf(stderr, "              -p:  Print diagnostics. \n");
         fprintf(stderr, "              -h:  Print the fuzzer version, usage message, and exit. \n");
+        fprintf(stderr, "    Examples: \n");
+        fprintf(stderr, "              cat my_dump | ./fuzzer \n");
+        fprintf(stderr, "              cat my_dump | ./fuzzer -s 42 -f 1000 \n");
+        fprintf(stderr, "              ./fuzzer -r my_dump_in -w my_dump_out \n");
         return 0;
       default: break;
     }
